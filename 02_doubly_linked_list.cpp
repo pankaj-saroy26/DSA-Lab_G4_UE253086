@@ -1,3 +1,4 @@
+
 #include <iostream>
 using namespace std;
 
@@ -9,60 +10,98 @@ public:
 
     Node(int value) {
         data = value;
-        prev = NULL;
-        next = NULL;
+        prev = nullptr;
+        next = nullptr;
     }
 };
 
-void insertEnd(Node*& head, Node*& tail, int value) {
+
+void insertAtBeginning(Node*& head, Node*& tail, int value) {
     Node* newNode = new Node(value);
 
-    if (head == NULL) {
+    if (head == nullptr) {          // empty list
         head = tail = newNode;
+    } else {
+        newNode->next = head;       // new node -> old head
+        head->prev = newNode;       // old head -> new node
+        head = newNode;
     }
-    else {
-        tail->next = newNode;
-        newNode->prev = tail;
+}
+
+void insertAtEnd(Node*& head, Node*& tail, int value) {
+    Node* newNode = new Node(value);
+
+    if (head == nullptr) {          
+        head = tail = newNode;
+    } else {
+        tail->next = newNode;      
+        newNode->prev = tail;       
         tail = newNode;
     }
 }
 
-void displayForward(Node* head) {
-    while (head != NULL) {
-        cout << head->data << " ";
-        head = head->next;
+// ---------- DELETE (first node with this value) ----------
+void deleteValue(Node*& head, Node*& tail, int value) {
+    Node* current = head;
+
+    while (current != nullptr && current->data != value) {
+        current = current->next;
     }
-    cout << endl;
+
+    if (current == nullptr) {
+        cout << value << " not found.\n";
+        return;
+    }
+
+    if (current == head && current == tail) {   // only one node
+        head = tail = nullptr;
+    } else if (current == head) {               // first node
+        head = head->next;
+        head->prev = nullptr;
+    } else if (current == tail) {               // last node
+        tail = tail->prev;
+        tail->next = nullptr;
+    } else {                                    // middle node
+        current->prev->next = current->next;
+        current->next->prev = current->prev;
+    }
+
+    delete current;
+    cout << value << " deleted.\n";
 }
 
-void displayBackward(Node* tail) {
-    while (tail != NULL) {
-        cout << tail->data << " ";
-        tail = tail->prev;
+
+int search(Node* head, int value) {
+    int index = 0;
+    for (Node* current = head; current != nullptr; current = current->next) {
+        if (current->data == value) return index;
+        index++;
     }
-    cout << endl;
+    return -1;
+}
+
+
+void display(Node* head) {
+    cout << "List: NULL <-> ";
+    for (Node* current = head; current != nullptr; current = current->next) {
+        cout << current->data << " <-> ";
+    }
+    cout << "NULL\n";
 }
 
 int main() {
-    Node* head = NULL;
-    Node* tail = NULL;
+    Node* head = nullptr;   // first node
+    Node* tail = nullptr;   // last node
 
-    int n;
-    cout << "Enter number of nodes: ";
-    cin >> n;
+    insertAtEnd(head, tail, 10);
+    insertAtEnd(head, tail, 20);
+    insertAtBeginning(head, tail, 5);
+    display(head);                          // 5 <-> 10 <-> 20
 
-    cout << "Enter values: ";
-    for (int i = 0; i < n; i++) {
-        int value;
-        cin >> value;
-        insertEnd(head, tail, value);
-    }
+    cout << "20 is at position " << search(head, 20) << "\n";
 
-    cout << "Forward: ";
-    displayForward(head);
+    deleteValue(head, tail, 10);
+    display(head);                          // 5 <-> 20
 
-    cout << "Backward: ";
-    displayBackward(tail);
-
-    return 0;
+    return 0;               
 }
