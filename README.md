@@ -28,5 +28,3 @@ Here, **n** is the number of input elements or nodes, **k** is a value range whe
 | [18_k_smallest_element.cpp](18_k_smallest_element.cpp) | Uses quickselect partitioning to find the kth smallest value without fully sorting the array. | Array: `[7, 10, 4, 3, 20, 15]`; enter `k = 3` → Result: `7`. | Average: **O(n)**; worst case: **O(n²)**. |
 | [19_bin_sort.cpp](19_bin_sort.cpp) | Counts each value in bins and rebuilds the sorted array; accepts integers from 0 to 99. | Input: `[42, 7, 19, 7, 3, 90, 12]` → Output: `[3, 7, 7, 12, 19, 42, 90]`. | **O(n + k)**, where `k = 100`; therefore **O(n)** for this fixed range. |
 | [20_parenthesis_matching.cpp](20_parenthesis_matching.cpp) | Uses a stack to check that parentheses, square brackets, and braces are correctly paired and nested. | `{[()]}` → balanced; `([)]` → not balanced. | **O(m)** for an expression of length `m`. |
-
-Tower of Hanoi was intentionally skipped and is not included.
