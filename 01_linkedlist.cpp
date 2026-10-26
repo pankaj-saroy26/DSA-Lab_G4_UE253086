@@ -96,14 +96,6 @@ Node* deletion(Node* head, int position) {
     return head;
 }
 
-void deleteList(Node* head) {
-    while (head != nullptr) {
-        Node* temp = head;
-        head = head->next;
-        delete temp;
-    }
-}
-
 int main() {
     vector<int> values = {5, 2, 9, 1};
     Node* head = convert(values);
