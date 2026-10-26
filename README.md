@@ -1,2 +1,33 @@
 # DSA-Lab_G4_UE253086
-This repository contains the Lab work we have done in our college.
+
+This repository contains the data structures and algorithms programs completed for our college lab.
+
+## Programs, Test Cases, and Time Complexity
+
+Here, **n** is the number of input elements or nodes, **k** is a value range when applicable, **d** is the number of digits in the largest number, and **h** is a tree's height.
+
+| File | What the program does | Representative test case | Time complexity |
+|---|---|---|---|
+| [01_linkedlist.cpp](01_linkedlist.cpp) | A linked list stores values in nodes connected by links; this program builds a singly linked list and demonstrates printing, counting, searching, inserting, and deleting nodes. | Start with `[5, 2, 9, 1]`; insert `3` at the head, `8` at the tail, and `7` at position 3; search for `9`, then delete the head, tail, and position 2. | Build/print/count/search/insert/delete: **O(n)** each in the worst case. |
+| [02_selection_sort.cpp](02_selection_sort.cpp) | Repeatedly selects the smallest remaining value and puts it in its sorted position. | Input: `[5, 3, 4, 1, 2]` → Output: `[1, 2, 3, 4, 5]`. | **O(n²)** comparisons in all cases. |
+| [03_bubble_sort.cpp](03_bubble_sort.cpp) | Repeatedly swaps neighboring values that are out of order until the array is sorted. | Input: `[5, 3, 4, 1, 2]` → Output: `[1, 2, 3, 4, 5]`. | **O(n²)** in the best, average, and worst cases in this implementation. |
+| [04_bucket_sort.cpp](04_bucket_sort.cpp) | Counts values in buckets and writes them back in order; this implementation accepts integers from 0 to 9. | Input: `[5, 2, 8, 3, 2, 1]` → Output: `[1, 2, 2, 3, 5, 8]`. | **O(n + k)**, where `k = 10`; therefore **O(n)** for this fixed range. |
+| [05_radix_sort.cpp](05_radix_sort.cpp) | The file is named Radix Sort, but its current code implements Merge Sort by dividing the array and merging sorted halves. | Input: `[5, 2, 8, 1, 3]` → Output: `[1, 2, 3, 5, 8]`. | **O(n log n)** in all cases. |
+| [06_merge_sort.cpp](06_merge_sort.cpp) | Divides an array into halves, sorts each half recursively, and merges the halves in order. | Input: `[5, 2, 8, 1, 3]` → Output: `[1, 2, 3, 5, 8]`. | **O(n log n)** in all cases. |
+| [07_quick_sort.cpp](07_quick_sort.cpp) | Chooses the last value as a pivot, partitions smaller and larger values, then sorts the partitions recursively. | Input: `[5, 2, 8, 1, 3]` → Output: `[1, 2, 3, 5, 8]`. | Average: **O(n log n)**; worst case: **O(n²)**. |
+| [08_binary_tree.cpp](08_binary_tree.cpp) | Demonstrates tree insertion, inorder/preorder/postorder traversal, and deletion; insertion follows the binary-search-tree ordering rule. | Starts with root `9`, children `2` and `5`; inserts `7` and `2`, then deletes `5`. | Insert/delete: **O(h)** each; each traversal: **O(n)**. |
+| [09_binary_search_tree.cpp](09_binary_search_tree.cpp) | Builds a binary search tree from entered values, deletes a chosen value, and prints the remaining values in sorted order. | Enter `7` values: `50 30 70 20 40 60 80`; delete `30`; inorder result: `20 40 50 60 70 80`. | Insert/delete: average **O(log n)**, worst **O(n)**; inorder traversal: **O(n)**. |
+| [10_avl_trees.cpp](10_avl_trees.cpp) | Builds a self-balancing AVL tree, rebalances after insertions/deletion, and prints inorder traversal. | Insert `10 20 30 40 50 25`, then delete `40`; inorder output is the remaining values in increasing order. | Each insert/delete: **O(log n)**; inorder traversal: **O(n)**. |
+| [11_doubly_linkedlist.cpp](11_doubly_linkedlist.cpp) | A doubly linked list connects each node to both its previous and next nodes; this program inserts at the end and prints in both directions. | Enter `4` nodes with values `10 20 30 40`; forward: `10 20 30 40`; backward: `40 30 20 10`. | Insert at end: **O(1)**; print in either direction: **O(n)**. |
+| [12_stack_array.cpp](12_stack_array.cpp) | Implements a last-in, first-out stack using an array, with push, pop, and display operations. | Push `10, 20, 30`; display gives `30 20 10`; pop removes `30`. | Push/pop: **O(1)**; display: **O(n)**. |
+| [13_stack_linkedlist.cpp](13_stack_linkedlist.cpp) | Implements a last-in, first-out stack using linked nodes, with push, pop, and display operations. | Push `10, 20, 30`; display gives `30 20 10`; pop removes `30`. | Push/pop: **O(1)**; display: **O(n)**. |
+| [14_queue_array.cpp](14_queue_array.cpp) | Implements a first-in, first-out queue using an array, with enqueue, dequeue, and display operations. | Enqueue `10, 20, 30`; dequeue removes `10`; remaining queue: `20 30`. | Enqueue/dequeue: **O(1)**; display: **O(n)**. |
+| [15_circular_queue.cpp](15_circular_queue.cpp) | Implements a fixed-size queue that reuses freed array positions by wrapping around to the start. | Enqueue `10, 20, 30, 40`; dequeue `10`; enqueue `50`; queue order: `20 30 40 50`. | Enqueue/dequeue: **O(1)**; display: **O(n)**. |
+| [16_queue_linkedlist.cpp](16_queue_linkedlist.cpp) | Implements a first-in, first-out queue using linked nodes, with enqueue, dequeue, and display operations. | Enqueue `10, 20, 30`; dequeue removes `10`; remaining queue: `20 30`. | Enqueue/dequeue: **O(1)**; display: **O(n)**. |
+| [17_radix_sort.cpp](17_radix_sort.cpp) | Sorts non-negative integers by processing one digit position at a time with a stable counting-sort pass. | Input: `[170, 45, 75, 90, 802, 24, 2, 66]` → Output: `[2, 24, 45, 66, 75, 90, 170, 802]`. | **O(d(n + 10))**, commonly written **O(dn)** for base 10. |
+| [18_heap_sort.cpp](18_heap_sort.cpp) | Builds a max heap, then repeatedly moves its largest value to the end to sort the array. | Input: `[12, 11, 13, 5, 6, 7]` → Output: `[5, 6, 7, 11, 12, 13]`. | Build heap: **O(n)**; full sort: **O(n log n)**. |
+| [19_k_smallest_element.cpp](19_k_smallest_element.cpp) | Uses quickselect partitioning to find the kth smallest value without fully sorting the array. | Array: `[7, 10, 4, 3, 20, 15]`; enter `k = 3` → Result: `7`. | Average: **O(n)**; worst case: **O(n²)**. |
+| [20_bin_sort.cpp](20_bin_sort.cpp) | Counts each value in bins and rebuilds the sorted array; accepts integers from 0 to 99. | Input: `[42, 7, 19, 7, 3, 90, 12]` → Output: `[3, 7, 7, 12, 19, 42, 90]`. | **O(n + k)**, where `k = 100`; therefore **O(n)** for this fixed range. |
+| [22_parenthesis_matching.cpp](22_parenthesis_matching.cpp) | Uses a stack to check that parentheses, square brackets, and braces are correctly paired and nested. | `{[()]}` → balanced; `([)]` → not balanced. | **O(m)** for an expression of length `m`. |
+
+Tower of Hanoi was intentionally skipped and is not included.
