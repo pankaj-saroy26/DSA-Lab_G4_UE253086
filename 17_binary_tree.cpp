@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-
+//Creating Node 
 class Node {
 public:
     int data;
@@ -33,8 +33,7 @@ Node* insert(Node* root, int n) {
 
     return root;
 }
-
-
+//Deletion
 Node* deleteNode(Node* root, int n) {
     if (root == NULL)
         return root;
@@ -67,8 +66,7 @@ Node* deleteNode(Node* root, int n) {
 
     return root;
 }
-
-
+//All three traversals in Binary Tree
 void inorder(Node* root) {
     if (root == NULL)
         return;
@@ -77,8 +75,6 @@ void inorder(Node* root) {
     cout << root->data << " ";
     inorder(root->right);
 }
-
-
 void preorder(Node* root) {
     if (root == NULL)
         return;
@@ -87,8 +83,6 @@ void preorder(Node* root) {
     preorder(root->left);
     preorder(root->right);
 }
-
-
 void postorder(Node* root) {
     if (root == NULL)
         return;
@@ -99,8 +93,6 @@ void postorder(Node* root) {
 }
 
 int main() {
-    
-    
     Node* root = new Node(9);
 
     root->left = new Node(2);
