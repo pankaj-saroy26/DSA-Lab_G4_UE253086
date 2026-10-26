@@ -1,58 +1,43 @@
 #include <iostream>
+#include <stack>
 #include <string>
 using namespace std;
 
-bool isMatching(char opening, char closing) {
-    if (opening == '(' && closing == ')') return true;
-    if (opening == '[' && closing == ']') return true;
-    if (opening == '{' && closing == '}') return true;
+bool isBalanced(string s) {
+    stack<char> st;
 
-    return false;
-}
-
-bool isBalanced(string expression) {
-    char stackArr[1000];
-    int top = -1;
-
-    for (int i = 0; i < expression.length(); i++) {
-        char ch = expression[i];
-
-        if (ch == '(' || ch == '[' || ch == '{') {
-            if (top == 999) {
-                return false;
-            }
-
-            top++;
-            stackArr[top] = ch;
+    for (char c : s) {
+        // opening bracket -> push
+        if (c == '(' || c == '{' || c == '[') {
+            st.push(c);
         }
-        else if (ch == ')' || ch == ']' || ch == '}') {
-            if (top == -1) {
-                return false;
-            }
+        // closing bracket -> check with top of stack
+        else if (c == ')' || c == '}' || c == ']') {
+            if (st.empty()) return false;   // nothing to match with
 
-            if (!isMatching(stackArr[top], ch)) {
-                return false;
-            }
+            char top = st.top();
+            st.pop();
 
-            top--;
+            if ((c == ')' && top != '(') ||
+                (c == '}' && top != '{') ||
+                (c == ']' && top != '[')) {
+                return false;               // wrong type of bracket
+            }
         }
     }
 
-    return top == -1;
+    return st.empty();   // balanced only if nothing is left over
 }
 
 int main() {
-    string expression;
+    string s;
+    cout << "Enter expression: ";
+    cin >> s;
 
-    cout << "Enter an expression without spaces: ";
-    cin >> expression;
-
-    if (isBalanced(expression)) {
-        cout << "Parentheses are balanced.";
-    }
-    else {
-        cout << "Parentheses are not balanced.";
-    }
+    if (isBalanced(s))
+        cout << "Balanced" << endl;
+    else
+        cout << "Not Balanced" << endl;
 
     return 0;
 }
