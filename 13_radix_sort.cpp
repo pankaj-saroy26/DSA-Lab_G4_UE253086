@@ -3,20 +3,17 @@ using namespace std;
 
 int getMax(int arr[], int n) {
     int maxValue = arr[0];
-
     for (int i = 1; i < n; i++) {
         if (arr[i] > maxValue) {
             maxValue = arr[i];
         }
     }
-
     return maxValue;
 }
 
 void countSort(int arr[], int n, int place) {
     int output[100];
     int count[10] = {0};
-
     for (int i = 0; i < n; i++) {
         int digit = (arr[i] / place) % 10;
         count[digit]++;
@@ -44,7 +41,6 @@ void radixSort(int arr[], int n) {
         countSort(arr, n, place);
     }
 }
-
 int main() {
     int arr[] = {170, 45, 75, 90, 802, 24, 2, 66};
     int n = 8;
@@ -55,6 +51,5 @@ int main() {
     for (int i = 0; i < n; i++) {
         cout << arr[i] << " ";
     }
-
-    return 0;
+ return 0;
 }
